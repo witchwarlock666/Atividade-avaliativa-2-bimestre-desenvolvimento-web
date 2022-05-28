@@ -110,7 +110,9 @@ const atv7 = () => {
 const atv8 = () => {
     soma = 0;
     for (i = 0; i <= 20; i++) {
-        soma += i;
+        if (i % 2 == 0) {
+            soma += i;
+        }
     }
     alert(soma);
 }
@@ -121,10 +123,10 @@ const atv9 = () => {
 
     for (i = 1; i <= 10; i++) {
         if (i < 10) {
-            str += n + " x " + i + " = " + n*i + ", ";
+            str += n + " x " + i + " = " + n * i + ", ";
         }
         else {
-            str += n + " x " + i + " = " + n*i;
+            str += n + " x " + i + " = " + n * i;
         }
     }
     alert(str);
@@ -135,7 +137,7 @@ const atv10 = () => {
     let ini = n
 
     if (n > 0) {
-        for (i = n-1; i > 0; i--) {
+        for (i = n - 1; i > 0; i--) {
             n = n * i;
         }
     }
@@ -145,21 +147,21 @@ const atv10 = () => {
     else {
         n = "Não existe";
     }
-    
+
     alert(ini + "! = " + n);
 }
 
 const getDia = (dia) => {
     let dias = {
-        1:  'Domingo',
-        2:  'Segunda',
-        3:  'Terça',
-        4:  'Quarta',
-        5:  'Quinta',
-        6:  'Sexta',
-        7:  'Sabado',
+        1: 'Domingo',
+        2: 'Segunda',
+        3: 'Terça',
+        4: 'Quarta',
+        5: 'Quinta',
+        6: 'Sexta',
+        7: 'Sabado',
         'default': 'Erro!'
-      };
+    };
 
     return dias[dia] || dias['default'];
 }
@@ -174,10 +176,51 @@ const swap = (n, i, j) => {
 const bubble = (n) => {
     for (i = 0; i < n.length - 1; i++) {
         for (j = 0; j < n.length - i - 1; j++) {
-            if (n[j] > n[j+1]) {
-                n = swap(n, j, j+1);
+            if (n[j] > n[j + 1]) {
+                n = swap(n, j, j + 1);
             }
         }
     }
     return n;
 }
+
+const openCloseNav = () => {
+    let sidebar = document.getElementById("mySidebar");
+    let main = document.getElementById("main");
+    if (sidebar.style.width == "58px" || sidebar.style.width == '') {
+        sidebar.style.width = "200px";
+        main.style.marginLeft = "200px";
+        sleep(500);
+        document.getElementById("opencloseicon").classList.remove('mdi-menu');
+        document.getElementById("opencloseicon").classList.add('mdi-close');
+        document.getElementById("i").innerHTML = "Atividade 1";
+        document.getElementById("ii").innerHTML = "Atividade 2";
+        document.getElementById("iii").innerHTML = "Atividade 3";
+        document.getElementById("iv").innerHTML = "Atividade 4";
+        document.getElementById("v").innerHTML = "Atividade 5";
+        document.getElementById("vi").innerHTML = "Atividade 6";
+        document.getElementById("vii").innerHTML = "Atividade 7";
+        document.getElementById("viii").innerHTML = "Atividade 8";
+        document.getElementById("ix").innerHTML = "Atividade 9";
+        document.getElementById("x").innerHTML = "Atividade 10";
+    }
+    else {
+        sidebar.style.width = "58px";
+        main.style.marginLeft = "58px";
+        sleep(500);
+        document.getElementById("opencloseicon").classList.remove('mdi-close');
+        document.getElementById("opencloseicon").classList.add('mdi-menu');
+        document.getElementById("i").innerHTML = "";
+        document.getElementById("ii").innerHTML = "";
+        document.getElementById("iii").innerHTML = "";
+        document.getElementById("iv").innerHTML = "";
+        document.getElementById("v").innerHTML = "";
+        document.getElementById("vi").innerHTML = "";
+        document.getElementById("vii").innerHTML = "";
+        document.getElementById("viii").innerHTML = "";
+        document.getElementById("ix").innerHTML = "";
+        document.getElementById("x").innerHTML = "";
+    }
+}
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
